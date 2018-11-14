@@ -15,11 +15,18 @@
     <link rel="stylesheet" type="text/css" href="real3d-flipbook/css/font-awesome.css">
     <script src="real3d-flipbook/js/flipbook.min.js"></script>
     <script type="text/javascript">
-      $(document).ready(function () {
+      document.getElementById("flipbook-pdf-link").addEventListener('click', function(e) {
+        console.log(e);
+        e.preventDefault;
         $("#flipbook-container").flipBook({
-          pdfUrl:"real3d-flipbook/pdf/book2.pdf",
+          pdfUrl: e.target.url
         });
       });
+      // $(document).ready(function () {
+      //   $("#flipbook-container").flipBook({
+      //     pdfUrl: 'real3d-flipbook/pdf/book2.pdf',
+      //   });
+      // });
     </script>
   </head>
   <body>
