@@ -21,7 +21,10 @@ class App extends Component {
     // });
   }
 
-  handleClick = e => e.preventDefault;
+  handleClick = e => {
+    e.preventDefault();
+    console.log("click pdf load callback run in index.html - now set UI here");
+  };
 
   render() {
     const { usePages, usePdf } = this.state;
@@ -32,7 +35,7 @@ class App extends Component {
         <div id="flipbook-container" ref="flipbook">
           <p>`Real 3D Flipbook has lightbox feature - book can be displayed in the same page with lightbox effect.`</p>
           <p>`Click on a book cover to start reading.`</p>
-          <a className="flipbook-pdf-link" onClick={e => this.handleClick(e)} href="real3d-flipbook/pdf/book2.pdf">
+          <a className="flipbook-pdf" onClick={e => this.handleClick(e)} href="real3d-flipbook/pdf/book2.pdf">
             <img src={thumbs[0]} alt="flipbook thumbnail" />
           </a>
           <Reader />
