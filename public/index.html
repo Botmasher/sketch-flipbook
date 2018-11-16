@@ -16,10 +16,11 @@
     <script src="real3d-flipbook/js/flipbook.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-        $(".flipbook-pdf").click(function(e) {
-          e.preventDefault();
-          $("#flipbook-container").flipBook({
-            pdfUrl: e.target.parentNode.pathname
+        document.getElementsByClassName("flipbook-pdf")[0].flipbookPdfPromise = new Promise(resolve => {
+          resolve(pdfUrl => {
+            $("#flipbook-container").flipBook({
+              pdfUrl
+            });
           });
         });
       });
