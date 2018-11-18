@@ -16,7 +16,7 @@
     <script src="real3d-flipbook/js/flipbook.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-        document.getElementsByClassName("flipbook-link")[0].flipbookSetPdf = new Promise(resolve => {
+        document.getElementsByClassName("flipbook-link").flipbookSetPdf = new Promise(resolve => {
           resolve(pdfUrl => {
             $("#flipbook-container").flipBook({
               pdfUrl
