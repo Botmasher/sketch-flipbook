@@ -1,5 +1,5 @@
-import Lister from './SketchbookList';
-import Reader from './SketchbookReader';
+import Lister from './Lister';
+import Reader from './Reader';
 
 export const SketchbookLister = Lister;
 export const SketchbookReader = Reader;

@@ -14,3 +14,15 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin-left: -15px;
+}
+
+li {
+  margin-right: 25px;
+}

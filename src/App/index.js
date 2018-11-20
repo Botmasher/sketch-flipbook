@@ -1,36 +1,34 @@
 import React, { Component } from 'react';
 import './App.css';
 import { sketchbooks } from '../store/';
-import { SketchbookLister } from '../Sketchbook/';
-import { SketchbookReader } from '../Sketchbook/';
+import { SketchbookLister, SketchbookReader } from '../Sketchbook/';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedSketchbookId: {},
+      selectedSketchbookId: '',
       sketchbooks: {}
     };
-  }
-
-  componentDidMount() {
-    this.state.sketchbooks !== sketchbooks && this.setState(
-      { sketchbooks },
-      () => Object.keys(sketchbooks).length === 1 && this.selectSketchbook(Object.keys(sketchbooks)[0])
-    );
   }
 
   // TODO better ids and parsing
   parseSketchbookNumber = url => parseInt(/\d+/.exec(url));
 
-  selectSketchbook = sketchbookId => {
-    const { sketchbooks } = this.state;
-    this.setState({ selectedSketchbookId: sketchbookId }, () => {
-      this.refs[`sketchbook${sketchbookId}`].flipbookSetPdf.then(loadFlipbook => (
-        loadFlipbook(sketchbooks[sketchbookId].url)
-      ));
-    });
+  loadSketchbook = sketchbookId => {
+    if (!window.flipbookSetPdf) {
+      // TODO wait for window to attach methods before loading first sketchbook on app load
+      window.setTimeout(() => console.log(window.flipbookSetPdf), 1000);
+      return;
+    }
+    window.flipbookSetPdf.then(loadFlipbook => (
+      loadFlipbook(this.state.sketchbooks[sketchbookId].url)
+    ));
   };
+
+  selectSketchbook = sketchbookId => (
+    sketchbookId && this.loadSketchbook(sketchbookId)
+  );
 
   handleThumbClick = e => {
     e.preventDefault();
@@ -38,18 +36,25 @@ class App extends Component {
     this.selectSketchbook(bookId);
   };
 
+  componentDidMount() {
+    this.state.sketchbooks !== sketchbooks && this.setState({
+      sketchbooks,
+      selectedSketchbookId: Object.keys(sketchbooks).length === 1 ? Object.keys(sketchbooks)[0] : ''
+    }, () => this.selectSketchbook(this.state.selectedSketchbookId));
+  }
+
   render() {
-    const { selectedSketchbookId, sketchbooks } = this.state;
+    const { selectedSketchbookId } = this.state;
     return (
       <div className="app">
         <div className="app-header">NativLang Sketchbooks</div>
         {!selectedSketchbookId
           ? <SketchbookLister
-              sketchbooks={sketchbooks}
+              sketchbooks={this.state.sketchbooks}
               handleThumbClick={this.handleThumbClick}
             />
           : <SketchbookReader
-              sketchbook={sketchbooks[selectedSketchbookId]}
+              sketchbook={this.state.sketchbooks[selectedSketchbookId]}
             />
         }
       </div>

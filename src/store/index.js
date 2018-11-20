@@ -5,10 +5,10 @@ export const sketchbooks = {
     thumb: 'real3d-flipbook/images/book2/thumb1.jpg',
     url: 'real3d-flipbook/pdf/book2.pdf'
   },
-  2: {
-    id: 2,
-    title: 'Another Sketchbook',
-    thumb: 'real3d-flipbook/images/book2/thumb1.jpg',
-    url: 'real3d-flipbook/pdf/book2.pdf'
-  }
+  // 2: {
+  //   id: 2,
+  //   title: 'Another Sketchbook',
+  //   thumb: 'real3d-flipbook/images/book2/thumb1.jpg',
+  //   url: 'real3d-flipbook/pdf/book2.pdf'
+  // }
 };
