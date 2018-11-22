@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Lister = ({ sketchbooks, handleThumbClick }) => {
+const Lister = ({ linkPrefix, sketchbooks, handleThumbClick }) => {
   return(
     <div className="flipbook-selector">
       <p>Click on a book cover to start reading.</p>
@@ -10,7 +10,7 @@ const Lister = ({ sketchbooks, handleThumbClick }) => {
             <a
               className="sketchbook-link"
               onClick={e => handleThumbClick(e)}
-              href={`sketchbook-${sketchbook.id}`}
+              href={`${linkPrefix}${sketchbook.id}`}
             >
               <img src={sketchbook.thumb} alt={`${sketchbook.title} thumbnail`} />
             </a>
