@@ -8,48 +8,38 @@ import { SketchbookLister, SketchbookReader } from '../Sketchbook/';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.linkPrefix = 'sketchbook-';
     this.state = {
       selectedSketchbookId: '',
       sketchbooks: {}
     };
   }
 
-  parseSketchbookId = url => url.split('-').slice(1).join('-');
-
   // async call to jquery method in public index
   setPdf = url => {
     !window.flipbookSetPdf
       // wait for window to attach method before loading first sketchbook
-      ? window.addEventListener('load', () => {
-          window.flipbookSetPdf.then(loadFlipbook => loadFlipbook(url));
-          console.log('setPdf');
-        })
+      ? window.addEventListener('load', () => (
+          window.flipbookSetPdf.then(loadFlipbook => loadFlipbook(url))
+        ))
       : window.flipbookSetPdf.then(loadFlipbook => loadFlipbook(url))
     ;
   };
 
-  loadSketchbook = sketchbookId => {
-    if (!sketchbookId) return;
-    const { url } = this.state.sketchbooks[sketchbookId];
-    this.setPdf(url);
-  };
+  loadSketchbook = sketchbook => this.setPdf(sketchbook.url);
 
-  handleThumbClick = e => {
+  handleThumbClick = (e, sketchbook) => {
     e.preventDefault();
-    const sketchbookId = this.parseSketchbookId(e.target.parentNode.pathname);
-    this.setState({ selectedSketchbookId: sketchbookId }, () => (
-      this.loadSketchbook(sketchbookId)
+    this.setState({ selectedSketchbookId: sketchbook.id }, () => (
+      this.loadSketchbook(sketchbook)
     ));
   };
 
   componentDidMount() {
-    const { sketchbooks, selectedSketchbookId } = this.state;
     const sketchbookIds = Object.keys(sketchbooksSrcData);
-    sketchbooks !== sketchbooksSrcData && this.setState({
+    this.state.sketchbooks !== sketchbooksSrcData && this.setState({
       sketchbooks: { ...sketchbooksSrcData },
       selectedSketchbookId: sketchbookIds.length === 1 ? sketchbookIds[0] : ''
-    }, () => this.loadSketchbook(selectedSketchbookId));
+    }, () => this.loadSketchbook(Object.values(this.state.sketchbooks)[0]));
   }
 
   render() {
@@ -59,8 +49,7 @@ class App extends Component {
         <div className="app-header">NativLang Sketchbooks</div>
         {!selectedSketchbookId
           ? <SketchbookLister
-              linkPrefix={this.linkPrefix}
-              sketchbooks={sketchbooks}
+              sketchbooks={Object.values(sketchbooks)}
               handleThumbClick={this.handleThumbClick}
             />
           : <SketchbookReader

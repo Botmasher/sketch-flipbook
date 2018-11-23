@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Reader = () => (
+const Reader = ({ sketchbook }) => (
   <div id="flipbook-container">
-    <p>This is the container where the sketchbook will be rendered.</p>
+    <p>The selected sketchbook should render here. If you do not see any content, please verify that JavaScript is enabled in your browser or <a href={sketchbook.url}>access the pdf directly</a>.</p>
   </div>
 );
 
