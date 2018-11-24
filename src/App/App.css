@@ -17,12 +17,38 @@
 
 ul {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  flex-wrap: wrap;
   list-style: none;
-  margin-left: -15px;
+  margin-left: 0px;
+  margin-top: 25px;
+  width: 90%;
 }
 
-li {
-  margin-right: 25px;
+li.sketchbook-item {
+  margin: 0 25px 20px 0;
+  width: 10%;
+}
+
+li.sketchbook-item p {
+  margin-top: 5px;
+  font-size: 13px;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
+.sketchbook-link {
+  text-decoration: none;
+  color: gray;
+}
+
+.sketchbook-link :hover {
+  text-decoration: underline;
+}
+
+.footer {
+  color: #bbb;
+  font-size: 14px;
+  letter-spacing: 1.5px;
 }

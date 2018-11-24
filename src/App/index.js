@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { sketchbooksSrcData } from '../store/';
 import { SketchbookLister, SketchbookReader } from '../Sketchbook/';
+import Footer from './Footer';
 
 // TODO router/history (back button from pdf)
 
@@ -56,6 +57,7 @@ class App extends Component {
               sketchbook={sketchbooks[selectedSketchbookId]}
             />
         }
+        <Footer />
       </div>
     );
   }
