@@ -3,6 +3,7 @@ import './App.css';
 import { sketchbooksSrcData } from '../store/';
 import { SketchbookLister, SketchbookReader } from '../Sketchbook/';
 import Footer from './Footer';
+import { Route, Link } from 'react-router-dom';
 
 // TODO router/history (back button from pdf)
 
@@ -39,7 +40,7 @@ class App extends Component {
     const sketchbookIds = Object.keys(sketchbooksSrcData);
     this.state.sketchbooks !== sketchbooksSrcData && this.setState({
       sketchbooks: { ...sketchbooksSrcData },
-      selectedSketchbookId: sketchbookIds.length === 1 ? sketchbookIds[0] : ''
+      selectedSketchbookId: sketchbookIds[0]
     }, () => this.loadSketchbook(Object.values(this.state.sketchbooks)[0]));
   }
 
@@ -48,19 +49,32 @@ class App extends Component {
     return (
       <div className="app">
         <div className="app-header">NativLang Sketchbooks</div>
-        {!selectedSketchbookId
-          ? <SketchbookLister
-              sketchbooks={Object.values(sketchbooks)}
-              handleThumbClick={this.handleThumbClick}
-            />
-          : <SketchbookReader
-              sketchbook={sketchbooks[selectedSketchbookId]}
-            />
-        }
+        <Route exact path="/" component={() => (
+          <SketchbookLister
+            sketchbooks={Object.values(sketchbooks)}
+            handleThumbClick={this.handleThumbClick}
+          />
+        )} />
+        <Route path="/test" component={() => (
+          <SketchbookReader
+            sketchbook={sketchbooks[selectedSketchbookId]}
+          />
+        )} />
         <Footer />
       </div>
     );
   }
 }
+
+//
+// {!selectedSketchbookId
+//   ? <SketchbookLister
+//       sketchbooks={Object.values(sketchbooks)}
+//       handleThumbClick={this.handleThumbClick}
+//     />
+//   : <SketchbookReader
+//       sketchbook={sketchbooks[selectedSketchbookId]}
+//     />
+// }
 
 export default App;
