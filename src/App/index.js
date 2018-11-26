@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { sketchbooksSrcData } from '../store/';
 import { SketchbookLister, SketchbookReader } from '../Sketchbook/';
+import Header from './Header';
 import Footer from './Footer';
-import { Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 // TODO router/history (back button from pdf)
 
@@ -45,36 +46,31 @@ class App extends Component {
   }
 
   render() {
-    const { selectedSketchbookId, sketchbooks } = this.state;
+    const { selectedSketchbookId } = this.state;
+    const sketchbooks = Object.values(this.state.sketchbooks);
     return (
       <div className="app">
-        <div className="app-header">NativLang Sketchbooks</div>
-        <Route exact path="/" component={() => (
-          <SketchbookLister
-            sketchbooks={Object.values(sketchbooks)}
-            handleThumbClick={this.handleThumbClick}
-          />
-        )} />
-        <Route path="/test" component={() => (
-          <SketchbookReader
-            sketchbook={sketchbooks[selectedSketchbookId]}
-          />
-        )} />
+        <Header />
+        <Switch>
+          <Route exact path="/" component={() => (
+            <SketchbookLister
+              sketchbooks={sketchbooks}
+              handleThumbClick={this.handleThumbClick}
+            />
+          )} />
+          <Route path="/:sketchbook" component={() => (
+            <SketchbookReader
+              sketchbook={sketchbooks[selectedSketchbookId]}
+            />
+          )} />
+          <Route component={() => (
+            <div>Page not found.</div>
+          )} />
+        </Switch>
         <Footer />
       </div>
     );
   }
 }
-
-//
-// {!selectedSketchbookId
-//   ? <SketchbookLister
-//       sketchbooks={Object.values(sketchbooks)}
-//       handleThumbClick={this.handleThumbClick}
-//     />
-//   : <SketchbookReader
-//       sketchbook={sketchbooks[selectedSketchbookId]}
-//     />
-// }
 
 export default App;
