@@ -7,9 +7,8 @@ const Lister = ({ linkPrefix, sketchbooks, handleThumbClick }) => (
       {sketchbooks.map(sketchbook => (
         <li key={`sketchbook-${sketchbook.id}`} className="sketchbook-item">
           <Link
-            to={sketchbook.url}
+            to={sketchbook.id}
             className="sketchbook-link"
-            onClick={e => handleThumbClick(e, sketchbook)}
           >
             <img src={sketchbook.thumb} alt={`${sketchbook.title} thumbnail`} />
             <p>{sketchbook.title}</p>

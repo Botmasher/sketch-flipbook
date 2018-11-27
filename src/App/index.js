@@ -58,9 +58,10 @@ class App extends Component {
               handleThumbClick={this.handleThumbClick}
             />
           )} />
-          <Route path="/:sketchbook" component={() => (
+          <Route path="/:sketchbookId" render={props => (
             <SketchbookReader
-              sketchbook={sketchbooks[selectedSketchbookId]}
+              {...props}
+              sketchbooks={sketchbooks}
             />
           )} />
           <Route component={() => (
