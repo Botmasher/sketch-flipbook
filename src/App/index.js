@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { sketchbooksSrcData } from '../store/';
 import { SketchbookLister, SketchbookReader } from '../Sketchbook/';
 import Header from './Header';
 import Footer from './Footer';
-import { Switch, Route } from 'react-router-dom';
+import './styles.css';
 
-// TODO router/history (back button from pdf)
+// TODO data server - book ids rewrite every load, etc.
 
 class App extends Component {
   constructor(props) {
@@ -30,41 +30,33 @@ class App extends Component {
 
   loadSketchbook = sketchbook => this.setPdf(sketchbook.url);
 
-  handleThumbClick = (e, sketchbook) => {
-    e.preventDefault();
-    this.setState({ selectedSketchbookId: sketchbook.id }, () => (
-      this.loadSketchbook(sketchbook)
-    ));
-  };
-
   componentDidMount() {
-    const sketchbookIds = Object.keys(sketchbooksSrcData);
     this.state.sketchbooks !== sketchbooksSrcData && this.setState({
-      sketchbooks: { ...sketchbooksSrcData },
-      selectedSketchbookId: sketchbookIds[0]
-    }, () => this.loadSketchbook(Object.values(this.state.sketchbooks)[0]));
+      sketchbooks: { ...sketchbooksSrcData }
+    });
   }
 
   render() {
-    const { selectedSketchbookId } = this.state;
-    const sketchbooks = Object.values(this.state.sketchbooks);
+    const { sketchbooks } = this.state;
     return (
       <div className="app">
         <Header />
         <Switch>
-          <Route exact path="/" component={() => (
+          <Route exact path="/" render={props => (
             <SketchbookLister
-              sketchbooks={sketchbooks}
-              handleThumbClick={this.handleThumbClick}
+              {...props}
+              sketchbooks={Object.values(sketchbooks)}
             />
           )} />
-          <Route path="/:sketchbookId" render={props => (
+          <Redirect exact from="/sketchbooks/" to="/" />
+          <Route path="/sketchbooks/:sketchbookId" render={props => (
             <SketchbookReader
               {...props}
-              sketchbooks={sketchbooks}
+              sketchbook={sketchbooks[props.match.params.sketchbookId]}
+              loadSketchbook={this.loadSketchbook}
             />
           )} />
-          <Route component={() => (
+          <Route render={props => (
             <div>Page not found.</div>
           )} />
         </Switch>
