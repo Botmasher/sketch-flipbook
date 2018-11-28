@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   // async call to jquery method in public index
-  setPdf = url => {
+  loadSketchbookPdf = url => {
     !window.flipbookSetPdf
       // wait for window to attach method before loading first sketchbook
       ? window.addEventListener('load', () => (
@@ -27,8 +27,6 @@ class App extends Component {
       : window.flipbookSetPdf.then(loadFlipbook => loadFlipbook(url))
     ;
   };
-
-  loadSketchbook = sketchbook => this.setPdf(sketchbook.url);
 
   componentDidMount() {
     this.state.sketchbooks !== sketchbooksSrcData && this.setState({
@@ -53,7 +51,7 @@ class App extends Component {
             <SketchbookReader
               {...props}
               sketchbook={sketchbooks[props.match.params.sketchbookId]}
-              loadSketchbook={this.loadSketchbook}
+              loadSketchbookPdf={this.loadSketchbookPdf}
             />
           )} />
           <Route render={props => (

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Reader = ({ sketchbook, loadSketchbook }) => {
-  sketchbook && loadSketchbook(sketchbook);
+const Reader = ({ sketchbook, loadSketchbookPdf }) => {
+  sketchbook && loadSketchbookPdf(sketchbook.url);
   return(
     <div id="flipbook-container">
       <p>The selected sketchbook should render here. If you do not see any content, please verify that JavaScript is enabled in your browser.</p>
