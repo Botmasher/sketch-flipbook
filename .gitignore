@@ -1,10 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # proprietary plugins
-/public/real3d*
+/frontend/public/real3d*
 
 # dependencies
-/node_modules
+node_modules/
 /.pnp
 .pnp.js
 

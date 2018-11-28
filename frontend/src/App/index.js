@@ -12,7 +12,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedSketchbookId: '',
       sketchbooks: {}
     };
   }
@@ -28,10 +27,22 @@ class App extends Component {
     ;
   };
 
+  testProxy = async () => {
+    console.log(`Fetching example data...`);
+    const res = await fetch(`/api/sketchbooks/`);
+    if (res.status === 200) {
+      const exampleData = await res.json();
+      console.log(exampleData);
+    } else {
+      console.log(`Fetch failed with status ${res.status} at URI ${res.url}`);
+    }
+  };
+
   componentDidMount() {
     this.state.sketchbooks !== sketchbooksSrcData && this.setState({
       sketchbooks: { ...sketchbooksSrcData }
     });
+    this.testProxy();
   }
 
   render() {
