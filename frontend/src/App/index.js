@@ -19,12 +19,14 @@ class App extends Component {
 
   // async call to jquery method in public index
   loadSketchbookPdf = url => {
+    const pdfUrl = `http://localhost:5000${url}`;
+    console.log(pdfUrl);
     !window.flipbookSetPdf
       // wait for window to attach method before loading first sketchbook
       ? window.addEventListener('load', () => (
-          window.flipbookSetPdf.then(loadFlipbook => loadFlipbook(url))
+          window.flipbookSetPdf.then(loadFlipbook => loadFlipbook(pdfUrl))
         ))
-      : window.flipbookSetPdf.then(loadFlipbook => loadFlipbook(url))
+      : window.flipbookSetPdf.then(loadFlipbook => loadFlipbook(pdfUrl))
     ;
   };
 
@@ -32,7 +34,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchSketchbooks()
-      .then(sketchbooks => this.setState({ sketchbooks }))
+      .then(sketchbooks => this.setState({ sketchbooks }), () => console.log(this.state.sketchbooks))
     ;
   }
 

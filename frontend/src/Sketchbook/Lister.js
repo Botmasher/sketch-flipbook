@@ -10,7 +10,7 @@ const Lister = ({ linkPrefix, sketchbooks }) => (
             className="sketchbook-link"
             to={`sketchbooks/${sketchbook.id}`}
           >
-            <img src={sketchbook.thumb} alt={`${sketchbook.title} thumbnail`} />
+            <img src={`http://localhost:5000${sketchbook.thumb}`} alt={`${sketchbook.title} thumbnail`} />
             <p>{sketchbook.title}</p>
           </Link>
         </li>

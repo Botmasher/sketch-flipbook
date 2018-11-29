@@ -4,50 +4,50 @@ const sketchbooks = [
   {
     id: uuid(),
     title: 'My Sketchbook1234',
-    thumb: '/real3d-flipbook/images/book2/thumb1.jpg',
-    url: '/real3d-flipbook/pdf/book2.pdf'
+    thumb: '/images/thumb1.jpg',
+    url: '/pdf/book2.pdf'
   },
   {
     id: uuid(),
     title: 'Another Sketchbook',
-    thumb: '/real3d-flipbook/images/book2/thumb2.jpg',
-    url: '/real3d-flipbook/pdf/example.pdf'
+    thumb: '/images/thumb2.jpg',
+    url: '/pdf/example.pdf'
   },
   {
     id: uuid(),
     title: 'My Sketchbook',
-    thumb: '/real3d-flipbook/images/book2/thumb1.jpg',
-    url: '/real3d-flipbook/pdf/book2.pdf'
+    thumb: '/images/thumb1.jpg',
+    url: '/pdf/book2.pdf'
   },
   {
     id: uuid(),
     title: 'Another Sketchbook',
-    thumb: '/real3d-flipbook/images/book2/thumb2.jpg',
-    url: '/real3d-flipbook/pdf/example.pdf'
+    thumb: '/images/thumb2.jpg',
+    url: '/pdf/example.pdf'
   },
   {
     id: uuid(),
     title: 'My Sketchbook',
-    thumb: '/real3d-flipbook/images/book2/thumb1.jpg',
-    url: '/real3d-flipbook/pdf/book2.pdf'
+    thumb: '/images/thumb1.jpg',
+    url: '/pdf/book2.pdf'
   },
   {
     id: uuid(),
     title: 'Another Sketchbook',
-    thumb: '/real3d-flipbook/images/book2/thumb2.jpg',
-    url: '/real3d-flipbook/pdf/example.pdf'
+    thumb: '/images/thumb2.jpg',
+    url: '/pdf/example.pdf'
   },
   {
     id: uuid(),
     title: 'My Sketchbook',
-    thumb: '/real3d-flipbook/images/book2/thumb1.jpg',
-    url: '/real3d-flipbook/pdf/book2.pdf'
+    thumb: '/images/thumb1.jpg',
+    url: '/pdf/book2.pdf'
   },
   {
     id: uuid(),
     title: 'Another Sketchbook',
-    thumb: '/real3d-flipbook/images/book2/thumb2.jpg',
-    url: '/real3d-flipbook/pdf/example.pdf'
+    thumb: '/images/thumb2.jpg',
+    url: '/pdf/example.pdf'
   }
 ];
 
