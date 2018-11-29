@@ -1,15 +1,21 @@
 const express = require('express');
 const cors = require('cors');
 const csp = require('helmet-csp');
+const { sketchbooksById } = require ('./data/');
 
 const app = express();
 
-const data = {
-	'abcd-1234': {
-		id: 'abcd-1234',
-		text: 'some-text'
-	}
-};
+const corsList = [
+	'http://localhost:3000',
+	'http://localhost:3001'
+];
+app.use(cors({
+	origin: (origin, cb) => (
+		corsList.includes(origin)
+			? cb(null, true)
+			: cb(new Error('CORS Error: Cross Origin Resource Sharing not allowed on this resource'))
+	)
+}));
 
 app.use(csp({
 	directives: {
@@ -20,15 +26,7 @@ app.use(csp({
 
 app.get('/', cors(), async(req, res, next) => {
 	try {
-		res.status(200).send({ data })
-	} catch(err) {
-		next(err);
-	}
-});
-
-app.get('/api/', cors(), async(req, res, next) => {
-	try {
-		res.json({ text: 'API page' });
+		res.status(200).send({ data: sketchbooksById })
 	} catch(err) {
 		next(err);
 	}
@@ -37,7 +35,7 @@ app.get('/api/', cors(), async(req, res, next) => {
 app.get('/api/sketchbooks/', cors(), async(req, res, next) => (
 	setTimeout(() => {
 		try {
-			res.json(demoData);
+			res.json(sketchbooksById);
 		} catch(err) {
 			next(err);
 		}
@@ -47,8 +45,7 @@ app.get('/api/sketchbooks/', cors(), async(req, res, next) => (
 app.get('/api/sketchbooks/:id', cors(), async(req, res, next) => (
 	setTimeout(() => {
 		try {
-			const demoId = req.params.id;
-			res.json(demoData[demoId]);
+			res.json(sketchbooksById[req.params.id]);
 		} catch(err) {
 			next(err);
 		}

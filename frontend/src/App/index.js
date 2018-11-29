@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { sketchbooksSrcData } from '../store/';
 import { SketchbookLister, SketchbookReader } from '../Sketchbook/';
 import Header from './Header';
 import Footer from './Footer';
 import './styles.css';
 
-// TODO data server - book ids rewrite every load, etc.
+// TODO api
+//  - [ ] fetch pdfs through backend
+//  - [ ] check again for CORS and CSP errors
 
 class App extends Component {
   constructor(props) {
@@ -27,22 +28,12 @@ class App extends Component {
     ;
   };
 
-  testProxy = async () => {
-    console.log(`Fetching example data...`);
-    const res = await fetch(`/api/sketchbooks/`);
-    if (res.status === 200) {
-      const exampleData = await res.json();
-      console.log(exampleData);
-    } else {
-      console.log(`Fetch failed with status ${res.status} at URI ${res.url}`);
-    }
-  };
+  fetchSketchbooks = () => fetch(`http://localhost:5000/api/sketchbooks/`).then(res => res.json());
 
   componentDidMount() {
-    this.state.sketchbooks !== sketchbooksSrcData && this.setState({
-      sketchbooks: { ...sketchbooksSrcData }
-    });
-    this.testProxy();
+    this.fetchSketchbooks()
+      .then(sketchbooks => this.setState({ sketchbooks }))
+    ;
   }
 
   render() {
