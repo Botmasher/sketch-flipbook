@@ -5,20 +5,20 @@ const { sketchbooksById } = require ('./data/');
 
 const app = express();
 
-// const corsList = [
-// 	'http://localhost:3000',
-// 	'http://localhost:3001'
-// ];
-// app.use(cors({
-// 	origin: (origin, cb) => (
-// 		corsList.includes(origin)
-// 			? cb(null, true)
-// 			: cb(new Error('CORS Error: Cross Origin Resource Sharing not allowed on this resource'))
-// 	)
-// }));
+const useCors = (corsWare, corsList) => (
+	app.use(corsWare({
+		origin: (origin, cb) => (
+			!origin || corsList.includes(origin)
+				? cb(null, true)
+				: cb(new Error('CORS Error: Cross Origin Resource Sharing not allowed on this resource'))
+		)
+	}))
+);
 
-// TODO test only - use whitelist!
-app.use(cors());
+useCors(cors, [
+	'http://localhost:3000',
+	'http://localhost:3001'
+]);
 
 app.use(csp({
 	directives: {

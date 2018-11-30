@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Lister = ({ linkPrefix, sketchbooks }) => (
+const SketchbookListerContainer = ({ linkPrefix, sketchbooks }) => (
   <div className="sketchbook-selector">
     <ul className="sketchbook-list">
       {sketchbooks.map(sketchbook => (
@@ -16,7 +16,8 @@ const Lister = ({ linkPrefix, sketchbooks }) => (
         </li>
       ))}
     </ul>
+    <p></p>
   </div>
 );
 
-export default Lister;
+export default SketchbookListerContainer;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Reader = ({ sketchbook, loadSketchbookPdf }) => {
+const SketchbookReaderContainer = ({ sketchbook, loadSketchbookPdf }) => {
   sketchbook && loadSketchbookPdf(sketchbook.url);
   return(
     <div id="flipbook-container">
@@ -12,4 +12,4 @@ const Reader = ({ sketchbook, loadSketchbookPdf }) => {
   );
 };
 
-export default Reader;
+export default SketchbookReaderContainer;
