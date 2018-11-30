@@ -1,14 +1,14 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SketchbookListerContainer from '../SketchbookLister/container';
-import SketchbookReaderContainer from '../SketchbookLister/container';
+import SketchbookReaderContainer from '../SketchbookReader/container';
 
 const Routes = ({ sketchbooks, loadSketchbookPdf }) => (
   <Switch>
     <Route exact path="/" render={props => (
       <SketchbookListerContainer
         {...props}
-        sketchbooks={Object.values(sketchbooks)}
+        sketchbooks={sketchbooks}
       />
     )} />
     <Redirect exact from="/sketchbooks/" to="/" />
