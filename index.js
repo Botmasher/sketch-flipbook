@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const csp = require('helmet-csp');
-const { sketchbooksById } = require ('./data/');
+const { sketchbooks } = require ('./data/');
+
+// TODO return sketchbooks promises in endpoints
 
 const app = express();
 
@@ -33,7 +35,7 @@ app.use('/images/', express.static(`${__dirname}/data/images/`));
 
 app.get('/', cors(), async(req, res, next) => {
 	try {
-		res.status(200).send({ data: sketchbooksById })
+		res.status(200).send({ data: sketchbooks })
 	} catch(err) {
 		next(err);
 	}
@@ -42,7 +44,7 @@ app.get('/', cors(), async(req, res, next) => {
 app.get('/api/sketchbooks/', cors(), async(req, res, next) => (
 	setTimeout(() => {
 		try {
-			res.json(sketchbooksById);
+			res.json(sketchbooks);
 		} catch(err) {
 			next(err);
 		}
@@ -52,7 +54,7 @@ app.get('/api/sketchbooks/', cors(), async(req, res, next) => (
 app.get('/api/sketchbooks/:id', cors(), async(req, res, next) => (
 	setTimeout(() => {
 		try {
-			res.json(sketchbooksById[req.params.id]);
+			res.json(sketchbooks[req.params.id]);
 		} catch(err) {
 			next(err);
 		}
