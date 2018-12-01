@@ -21,14 +21,21 @@ ul {
   justify-content: center;
   flex-wrap: wrap;
   list-style: none;
-  margin-left: 0px;
+  margin-left: 50px;
   margin-top: 25px;
   width: 90%;
 }
 
 li.sketchbook-item {
-  margin: 0 25px 20px 0;
+  margin: 10px 5px 0 2px;
+  padding: 4px;
   width: 10%;
+  opacity: 0.8;
+}
+
+li.active {
+  background-color: #fed;
+  opacity: 1.0;
 }
 
 li.sketchbook-item p {
@@ -38,12 +45,12 @@ li.sketchbook-item p {
   text-overflow: ellipsis;
 }
 
-.sketchbook-link {
+.sketchbook-list a {
   text-decoration: none;
   color: gray;
 }
 
-.sketchbook-link :hover {
+.sketchbook-list a :hover {
   text-decoration: underline;
 }
 
