@@ -29,13 +29,12 @@ app.use(csp({
 	}
 }));
 
-console.log(`${__dirname}/data/`);
 app.use('/pdf/', express.static(`${__dirname}/data/pdf/`));
 app.use('/images/', express.static(`${__dirname}/data/images/`));
 
 app.get('/', cors(), async(req, res, next) => {
 	try {
-		res.status(200).send({ data: sketchbooks })
+		res.status(200).send();
 	} catch(err) {
 		next(err);
 	}
@@ -44,7 +43,9 @@ app.get('/', cors(), async(req, res, next) => {
 app.get('/api/sketchbooks/', cors(), async(req, res, next) => (
 	setTimeout(() => {
 		try {
-			res.json(sketchbooks);
+			sketchbooks.getAll().then(
+				data => res.json(data)
+			);
 		} catch(err) {
 			next(err);
 		}
@@ -54,11 +55,34 @@ app.get('/api/sketchbooks/', cors(), async(req, res, next) => (
 app.get('/api/sketchbooks/:id', cors(), async(req, res, next) => (
 	setTimeout(() => {
 		try {
-			res.json(sketchbooks[req.params.id]);
+			sketchbooks.get(req.params.id).then(
+				data => res.json(data)
+			);
 		} catch(err) {
 			next(err);
 		}
 	}, 300)
+));
+
+app.post('/api/sketchbooks/add/:title-:url-:coverThumb-:images-:thumbs', cors(), async(req, res, next) => {
+	const { title, url, coverThumb, images, thumbs } = req.params;
+	sketchbooks.add({ title, url, coverThumb, images, thumbs })
+		.then(data => res.json(data))
+	;
+});
+
+app.post('/api/sketchbooks/:id/update/:title-:url-:coverThumb-:images-:thumbs', cors(), async(req, res, next) => {
+	const { id, title, url, coverThumb, images, thumbs } = req.params;
+	sketchbooks.update(
+		id,
+		[title, url, coverThumb, images, thumbs].reduce((props, currentProp) => (
+			currentProp ? { ...props, currentProp } : { ...props }
+		), {})
+	).then(data => res.json(data));
+});
+
+app.post('/api/sketchbooks/:id/remove', cors(), async(req, res, next) => (
+	sketchbooks.remove(req.params.id).then(data => res.json(data))
 ));
 
 const PORT = process.env.PORT || 5000;
