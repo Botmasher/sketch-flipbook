@@ -23,6 +23,25 @@ class Sketchbooks {
     });
   }
 
+  addMany(sketchbooks) {
+    return new Promise(resolve => {
+      const addedSketchbooks = sketchbooks.reduce((allNewSketchbooks, sketchbook) => {
+        const id = uuid();
+        return({
+          ...allNewSketchbooks,
+          [id]: {
+            ...sketchbook
+          }
+        });
+      });
+      this.data = {
+        ...this.data,
+        ...addedSketchbooks
+      };
+      resolve(this.data);
+    });
+  }
+
   remove(sketchbookId) {
     return new Promise(resolve => {
       this.data = Object.keys(this.data).reduce((retainedEntries, entryId) => (
