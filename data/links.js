@@ -1,49 +1,52 @@
 const uuid = require('uuid/v4');
 
-class Sketchbooks {
+class Links {
   constructor() {
     this.data = {};
   }
 
-  add(sketchbook) {
+  add(sketchbookId, linkSet) {
     return new Promise(resolve => {
-      const sketchbookId = uuid();
+      const id = uuid();
       this.data = {
         ...this.data,
-        [sketchbookId]: {
-          id: sketchbookId,
-          title: sketchbook.title,
-          description: sketchbook.description ? sketchbook.description : ''
+        [id]: {
+          id,
+          sketchbookId,
+          coverThumb: linkSet.coverThumb,
+          url: linkSet.url,
+          thumbs: linkSet.thumbs,
+          images: linkSet.images
         }
       };
       resolve(this.data);
     });
   }
 
-  addMany(sketchbooks) {
+  addMany(linkSets) {
     return new Promise(resolve => {
-      const addedSketchbooks = sketchbooks.reduce((allNewSketchbooks, sketchbook) => {
+      const addedLinks = linkSets.reduce((allNewLinkSets, currentLinkSet) => {
         const id = uuid();
         return({
-          ...allNewSketchbooks,
+          ...allNewLinkSets,
           [id]: {
             id,
-            ...sketchbook
+            ...currentLinkSet
           }
         });
       }, {});
       this.data = {
         ...this.data,
-        ...addedSketchbooks
+        ...addedLinks
       };
       resolve(this.data);
     });
   }
 
-  remove(sketchbookId) {
+  remove(linkSetId) {
     return new Promise(resolve => {
       this.data = Object.keys(this.data).reduce((retainedEntries, entryId) => (
-        entryId === sketchbookId
+        entryId === linkSetId
           ? { ...retainedEntries }
           : { ...retainedEntries, [entryId]: { ...this.data[entryId] } }
       ), {});
@@ -51,21 +54,21 @@ class Sketchbooks {
     });
   }
 
-  update(sketchbookId, sketchbookData) {
+  update(linkSetId, linkSetData) {
     return new Promise(resolve => {
       this.data = {
         ...this.data,
-        [sketchbookId]: {
-          ...sketchbooks[sketchbookId],
-          ...sketchbookData
+        [linkSetId]: {
+          ...this.data[linkSetId],
+          ...linkSetData
         }
       };
-      resolve(this.data[sketchbookId]);
+      resolve(this.data[linkSetId]);
     });
   }
 
-  get(sketchbookId) {
-    return new Promise(resolve => resolve(this.data[sketchbookId]))
+  get(linkSetId) {
+    return new Promise(resolve => resolve(this.data[linkSetId]))
   }
 
   getAll() {
@@ -73,8 +76,8 @@ class Sketchbooks {
   }
 }
 
-const sketchbooks = new Sketchbooks();
+const links = new Links();
 
 module.exports = {
-  sketchbooks
+  links
 };
