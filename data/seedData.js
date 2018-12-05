@@ -1,6 +1,7 @@
 const sketchbooksSeedData = [
   {
     title: 'My Sketchbook1234',
+    description: 'My latest sketchbook for all of my projects.',
     coverImage: '',
     coverThumb: '/images/thumb1.jpg',
     url: '/pdf/book2.pdf',

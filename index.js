@@ -3,8 +3,6 @@ const cors = require('cors');
 const csp = require('helmet-csp');
 const { sketchbooks } = require ('./data/');
 
-// TODO return sketchbooks promises in endpoints
-
 const app = express();
 
 const useCors = (corsWare, corsList) => (

@@ -13,7 +13,11 @@ class Sketchbooks {
         [sketchbookId]: {
           id: sketchbookId,
           title: sketchbook.title,
-          description: sketchbook.description ? sketchbook.description : ''
+          description: sketchbook.description ? sketchbook.description : '',
+          coverThumb: linkSet.coverThumb,
+          url: linkSet.url,
+          thumbs: linkSet.thumbs,
+          images: linkSet.images
         }
       };
       resolve(this.data);

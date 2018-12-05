@@ -30,7 +30,8 @@ li.sketchbook-item {
   margin: 10px 5px 0 2px;
   padding: 4px;
   width: 10%;
-  opacity: 0.8;
+  opacity: 0.0;
+  animation: fade-to-partial 2s ease 0.1s 1 forwards;
 }
 
 li.active {
@@ -58,4 +59,9 @@ li.sketchbook-item p {
   color: #bbb;
   font-size: 14px;
   letter-spacing: 1.5px;
+}
+
+@keyframes fade-to-partial {
+  from {opacity: 0.0;}
+  to {opacity: 0.8;}
 }
