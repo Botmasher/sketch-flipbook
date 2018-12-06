@@ -62,26 +62,27 @@ app.get('/api/sketchbooks/:id', cors(), async(req, res, next) => (
 	}, 300)
 ));
 
-app.post('/api/sketchbooks/add/:title-:url-:coverThumb-:images-:thumbs', cors(), async(req, res, next) => {
-	const { title, url, coverThumb, images, thumbs } = req.params;
-	sketchbooks.add({ title, url, coverThumb, images, thumbs })
-		.then(data => res.json(data))
-	;
-});
-
-app.post('/api/sketchbooks/:id/update/:title-:url-:coverThumb-:images-:thumbs', cors(), async(req, res, next) => {
-	const { id, title, url, coverThumb, images, thumbs } = req.params;
-	sketchbooks.update(
-		id,
-		[title, url, coverThumb, images, thumbs].reduce((props, currentProp) => (
-			currentProp ? { ...props, currentProp } : { ...props }
-		), {})
-	).then(data => res.json(data));
-});
-
-app.post('/api/sketchbooks/:id/remove', cors(), async(req, res, next) => (
-	sketchbooks.remove(req.params.id).then(data => res.json(data))
-));
+// TODO secure before doing any CrUD
+// app.post('/api/sketchbooks/add/:title-:url-:coverThumb-:images-:thumbs', cors(), async(req, res, next) => {
+// 	const { title, url, coverThumb, images, thumbs } = req.params;
+// 	sketchbooks.add({ title, url, coverThumb, images, thumbs })
+// 		.then(data => res.json(data))
+// 	;
+// });
+//
+// app.post('/api/sketchbooks/:id/update/:title-:url-:coverThumb-:images-:thumbs', cors(), async(req, res, next) => {
+// 	const { id, title, url, coverThumb, images, thumbs } = req.params;
+// 	sketchbooks.update(
+// 		id,
+// 		[title, url, coverThumb, images, thumbs].reduce((props, currentProp) => (
+// 			currentProp ? { ...props, currentProp } : { ...props }
+// 		), {})
+// 	).then(data => res.json(data));
+// });
+//
+// app.post('/api/sketchbooks/:id/remove', cors(), async(req, res, next) => (
+// 	sketchbooks.remove(req.params.id).then(data => res.json(data))
+// ));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Serving on port ${PORT}`));

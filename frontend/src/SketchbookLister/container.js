@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SketchbookLister from './';
+import SketchbookPreview from '../SketchbookPreview/';
 
 class SketchbookListerContainer extends Component {
   constructor(props) {
@@ -30,23 +31,7 @@ class SketchbookListerContainer extends Component {
           selectSketchbook={this.selectSketchbook}
           selectedSketchbookId={sketchbookId}
         />
-        {sketchbook && (
-          <div>
-            <p>{sketchbook.title} (preview)</p>
-            <ul className="sketchbook-list">
-              {sketchbook.thumbs && sketchbook.thumbs.map((thumbUrl, i) => (
-                <li className="sketchbook-item" key={`${thumbUrl}`}>
-                  <a href={`http://localhost:5000${sketchbook.images[i]}`}>
-                    <img
-                      src={`http://localhost:5000${thumbUrl}`}
-                      alt={`${sketchbook.title} thumb`}
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {sketchbook && <SketchbookPreview sketchbook={sketchbook} />}
       </div>
     );
   }

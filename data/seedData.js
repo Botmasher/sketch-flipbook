@@ -28,6 +28,7 @@ const sketchbooksSeedData = [
   },
   {
     title: 'Another Sketchbook',
+    description: '',
     coverImage: '',
     coverThumb: '/images/thumb2.jpg',
     url: '/pdf/example.pdf',
@@ -50,6 +51,7 @@ const sketchbooksSeedData = [
   },
   {
     title: 'Otro cuaderno mío',
+    description: '',
     coverImage: '',
     coverThumb: '/images/thumb1.jpg',
     url: '/pdf/book2.pdf',
@@ -76,6 +78,7 @@ const sketchbooksSeedData = [
   },
   {
     title: 'One Last Sketchbook',
+    description: '',
     coverImage: '',
     coverThumb: '/images/thumb2.jpg',
     url: '/pdf/example.pdf',

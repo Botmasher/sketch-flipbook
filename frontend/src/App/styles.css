@@ -31,7 +31,7 @@ li.sketchbook-item {
   padding: 4px;
   width: 10%;
   opacity: 0.0;
-  animation: fade-to-partial 2s ease 0.1s 1 forwards;
+  animation: fade 2s ease 0.1s 1 forwards;
 }
 
 li.active {
@@ -61,7 +61,12 @@ li.sketchbook-item p {
   letter-spacing: 1.5px;
 }
 
-@keyframes fade-to-partial {
+@keyframes fade {
   from {opacity: 0.0;}
   to {opacity: 0.8;}
+}
+
+@keyframes opaque {
+  from {opacity: 0.5;}
+  to {opacity: 1.0;}
 }
