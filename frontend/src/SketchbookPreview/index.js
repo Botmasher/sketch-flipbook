@@ -1,8 +1,8 @@
 import React from 'react';
 
 const SketchbookPreview = ({ sketchbook }) => (
-  <div>
-    <p>{sketchbook.title} (preview)</p>
+  <div className="sketchbook-preview">
+    <p>{sketchbook.title} <em>preview</em></p>
     <ul key={sketchbook.id} className="sketchbook-list">
       {sketchbook.thumbs && sketchbook.thumbs.map((thumbUrl, i) => (
         <li className="sketchbook-item" key={`${thumbUrl}`}>

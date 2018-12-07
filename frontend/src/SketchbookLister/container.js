@@ -25,7 +25,7 @@ class SketchbookListerContainer extends Component {
     const { sketchbookId } = this.state;
     const sketchbook = sketchbookId ? sketchbooks[sketchbookId] : null;
     return(
-      <div className="sketchbook-selector">
+      <div className="sketchbook-list-container">
         <SketchbookLister
           sketchbooksList={sketchbooksList}
           selectSketchbook={this.selectSketchbook}

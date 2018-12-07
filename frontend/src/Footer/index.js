@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => (
   <div className="footer">
-    Usage notice here - designed for NativLang. All rights reserved.
+    <p>Designed 2018 with care to share for NativLang. Hosted here on Heroku; reposited <a href="https://github.com/Botmasher/sketch-flipbook">there</a> on GitHub.</p>
   </div>
 );
 

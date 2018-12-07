@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SketchbookListerContainer from '../SketchbookLister/container';
 import SketchbookReaderContainer from '../SketchbookReader/container';
+import PageNotFound from '../PageNotFound';
 
 const Routes = ({ sketchbooks, loadSketchbookPdf }) => (
   <Switch>
@@ -20,7 +21,7 @@ const Routes = ({ sketchbooks, loadSketchbookPdf }) => (
       />
     )} />
     <Route render={props => (
-      <div>Page not found.</div>
+        <PageNotFound />
     )} />
   </Switch>
 );
