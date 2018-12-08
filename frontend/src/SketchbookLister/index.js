@@ -13,7 +13,7 @@ const SketchbookLister = ({ sketchbooksList, selectSketchbook, selectedSketchboo
       >
         <Link to={`sketchbooks/${sketchbook.id}`}>
           <img
-            src={`http://localhost:5000${sketchbook.coverThumb}`}
+            src={`${sketchbook.coverThumb}`}
             alt={`${sketchbook.title} thumbnail`}
           />
           <p>{sketchbook.title}</p>

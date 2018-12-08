@@ -6,9 +6,9 @@ const SketchbookPreview = ({ sketchbook }) => (
     <ul key={sketchbook.id} className="sketchbook-list">
       {sketchbook.thumbs && sketchbook.thumbs.map((thumbUrl, i) => (
         <li className="sketchbook-item" key={`${thumbUrl}`}>
-          <a href={`http://localhost:5000${sketchbook.images[i]}`}>
+          <a href={`${sketchbook.images[i]}`}>
             <img
-              src={`http://localhost:5000${thumbUrl}`}
+              src={`${thumbUrl}`}
               alt={`${sketchbook.title} thumb`}
             />
           </a>

@@ -14,7 +14,7 @@ class App extends Component {
 
   // async call to jquery method in public index
   loadSketchbookPdf = url => {
-    const pdfUrl = `http://localhost:5000${url}`;
+    const pdfUrl = `${url}`;
     !window.flipbookSetPdf
       // wait for window to attach method before loading first sketchbook
       ? window.addEventListener('load', () => (
@@ -24,11 +24,11 @@ class App extends Component {
     ;
   };
 
-  fetchSketchbooks = () => fetch(`http://localhost:5000/api/sketchbooks/`).then(res => res.json());
+  fetchSketchbooks = () => fetch(`/api/sketchbooks/`).then(res => res.json());
 
   componentDidMount() {
     this.fetchSketchbooks()
-      .then(sketchbooks => this.setState({ sketchbooks }), () => console.log(this.state.sketchbooks))
+      .then(sketchbooks => this.setState({ sketchbooks }))
     ;
   }
 
