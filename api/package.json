@@ -1,0 +1,26 @@
+{
+  "name": "sketch-flipbook",
+  "version": "1.0.0",
+  "description": "Sketchbook browser and viewer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Botmasher/sketch-flipbook.git"
+  },
+  "author": "Josh R (Botmasher)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Botmasher/sketch-flipbook/issues"
+  },
+  "homepage": "https://github.com/Botmasher/sketch-flipbook#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "helmet-csp": "^2.7.1",
+    "uuid": "^3.3.2"
+  }
+}

@@ -2,7 +2,7 @@
 
 This is a digital sketch flip-through notebook for showcasing early sketchwork for my animated projects. The core functionality is powered by the [Real3D FlipBook Plugin](https://codecanyon.net/item/real3d-flipbook-jquery-plugin/4281720).
 
-Live demo available [on Heroku](https://radiant-plains-39076.herokuapp.com/).
+Live demo available [on Heroku](https://anim-sketchbooks.herokuapp.com/).
 
 ## Making Modifications
 
