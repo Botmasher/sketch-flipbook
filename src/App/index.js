@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Header/';
 import Footer from '../Footer/';
 import Routes from './Routes';
+import { sketchbooksSrcData } from '../store/';
 import './styles.css';
 
 class App extends Component {
@@ -24,11 +25,11 @@ class App extends Component {
     ;
   };
 
-  fetchSketchbooks = () => fetch(`/api/sketchbooks/`).then(res => res.json());
+  fetchSketchbooks = () => new Promise(resolve => resolve(sketchbooksSrcData));
 
   componentDidMount() {
     this.fetchSketchbooks()
-      .then(sketchbooks => this.setState({ sketchbooks }))
+      .then(sketchbooks => this.setState({ sketchbooks }), () => console.log(this.state.sketchbooks))
     ;
   }
 
