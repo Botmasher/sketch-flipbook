@@ -1,10 +1,12 @@
-import uuid from 'uuid/v4';
+//import uuid from 'uuid/v4';
 
 const sketchbooks = [
   {
+    id: '1',
     title: 'My Sketchbook',
     description: '',
-    url: '/books/book2/pdf/book2.pdf',
+    url: '',
+    //url: '/books/book2/pdf/book2.pdf',
     coverImage: '',
     coverThumb: '/books/book2/thumbs/thumb1.jpg',
     thumbs: [
@@ -29,6 +31,7 @@ const sketchbooks = [
     ]
   },
   {
+    id: '2',
     title: 'Another Sketchbook',
     description: '',
     url: '/books/example/pdf/example.pdf',
@@ -52,6 +55,7 @@ const sketchbooks = [
     ]
   },
   {
+    id: '3',
     title: 'My Sketchbook',
     description: '',
     url: '/books/book2/pdf/book2.pdf',
@@ -79,6 +83,7 @@ const sketchbooks = [
     ]
   },
   {
+    id: '4',
     title: 'Another Sketchbook',
     description: '',
     url: '/books/example/pdf/example.pdf',
@@ -100,11 +105,10 @@ const sketchbooks = [
 ];
 
 export const sketchbooksSrcData = sketchbooks.reduce((allSketchbooks, currentSketchbook) => {
-  const id = uuid();
+  //const id = uuid();
   return ({
     ...allSketchbooks,
-    [id]: {
-      id,
+    [currentSketchbook.id]: {
       ...currentSketchbook
     }
   });

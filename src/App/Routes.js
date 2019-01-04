@@ -4,7 +4,7 @@ import SketchbookListerContainer from '../SketchbookLister/container';
 import SketchbookReaderContainer from '../SketchbookReader/container';
 import PageNotFound from '../PageNotFound';
 
-const Routes = ({ sketchbooks, loadSketchbookPdf }) => (
+const Routes = ({ sketchbooks, loadSketchbook }) => (
   <Switch>
     <Route exact path="/" render={props => (
       <SketchbookListerContainer
@@ -17,7 +17,7 @@ const Routes = ({ sketchbooks, loadSketchbookPdf }) => (
       <SketchbookReaderContainer
         {...props}
         sketchbook={sketchbooks[props.match.params.sketchbookId]}
-        loadSketchbookPdf={loadSketchbookPdf}
+        loadSketchbook={loadSketchbook}
       />
     )} />
     <Route render={props => (
