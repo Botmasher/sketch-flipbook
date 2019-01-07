@@ -18,19 +18,19 @@
     <script type="text/javascript">
       $(document).ready(function() {
         window.flipbookSetPdf = new Promise(resolve => {
-          resolve(pdfUrl => {
+          resolve(pdfUrl => (
             $("#flipbook-container").flipBook({
               pdfUrl
-            });
-          });
+            })
+          ));
         });
-        window.flipbookSetPages = new Promise(resolve => {
-          resolve(pages => {
-            $("#flipbook-container").flipBook({
-              pages
-            });
-          });
-        });
+        // window.flipbookSetPages = new Promise(resolve => {
+        //   resolve(pages => {
+        //     $("#flipbook-container").flipBook({
+        //       pages
+        //     });
+        //   });
+        // });
       });
     </script>
   </head>

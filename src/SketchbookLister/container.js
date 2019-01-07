@@ -10,7 +10,7 @@ class SketchbookListerContainer extends Component {
     };
   }
 
-  selectSketchbook = sketchbook => this.setState({
+  focusSketchbook = sketchbook => this.setState({
     sketchbookId: sketchbook.id
   });
 
@@ -28,8 +28,8 @@ class SketchbookListerContainer extends Component {
       <div className="sketchbook-list-container">
         <SketchbookLister
           sketchbooksList={sketchbooksList}
-          selectSketchbook={this.selectSketchbook}
-          selectedSketchbookId={sketchbookId}
+          focusSketchbook={this.focusSketchbook}
+          focusedSketchbookId={sketchbookId}
         />
         {sketchbook && <SketchbookPreview sketchbook={sketchbook} />}
       </div>

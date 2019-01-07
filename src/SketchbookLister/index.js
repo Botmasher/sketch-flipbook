@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SketchbookLister = ({ sketchbooksList, selectSketchbook, selectedSketchbookId }) => (
+const SketchbookLister = ({ sketchbooksList, focusSketchbook, focusedSketchbookId }) => (
   <ul className="sketchbook-list">
     {sketchbooksList.map(sketchbook => (
       <li
         key={`sketchbook-${sketchbook.id}`}
         className={`sketchbook-item
-          ${sketchbook.id === selectedSketchbookId ? ' active' : ''}
+          ${sketchbook.id === focusedSketchbookId ? ' active' : ''}
         `}
-        onMouseEnter={() => selectSketchbook(sketchbook)}
+        onMouseEnter={() => focusSketchbook(sketchbook)}
       >
         <Link to={`sketchbooks/${sketchbook.id}`}>
           <img

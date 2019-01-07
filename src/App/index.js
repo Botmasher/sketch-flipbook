@@ -13,30 +13,26 @@ class App extends Component {
     };
   }
 
-  loadFlipbookPdf = pdfUrl => (
+  loadFlipbook = pdfUrl => (
     window.flipbookSetPdf
-      .then(loadFlipbookUrl => loadFlipbookUrl(pdfUrl))
-  );
-
-  loadFlipbookImages = images => (
-    window.flipbookSetPages
-      .then(loadFlipbookPages => loadFlipbookPages(images))
+      .then(loadFlipbookPdf => loadFlipbookPdf(pdfUrl))
   );
 
   // async call to jquery method in public index
-  loadSketchbook = options => {
-    if (!options.url && !options.images) return;
-    console.log(options);
-    const loadFlipbook = options.url ? this.loadFlipbookPdf : this.loadFlipbookImages;
-    const flipbookData = options.url ? `${options.url}` : options.images;
-    !(window.flipbookSetPdf && window.flipbookSetPages)
+  loadSketchbook = sketchbookId => {
+    const { sketchbooks } = this.state;
+    if (!(sketchbooks && sketchbooks[sketchbookId])) return;
+    const pdfUrl = `${sketchbooks[sketchbookId].url}`;
+    console.log(pdfUrl);
+    !(window.flipbookSetPdf)
       // wait for window to attach method before loading first sketchbook
-      ? window.addEventListener('load', () => loadFlipbook(flipbookData))
-      : loadFlipbook(flipbookData)
+      ? window.addEventListener('load', () => this.loadFlipbook(pdfUrl))
+      : this.loadFlipbook(pdfUrl)
     ;
   };
 
   componentDidMount() {
+    console.log("Reloading the entire app...");
     this.setState({
       sketchbooks: sketchbooksSrcData
     });
