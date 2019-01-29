@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Header = () => (
-  <div className="app-header">NativLang background art</div>
+  <div className="app-header">NativLang Sketchbook</div>
 );
 
 export default Header;

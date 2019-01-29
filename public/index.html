@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#000000">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
 
-    <title>NativLang Sketchbook</title>
+    <title>NativLang Sketchbook - background art for my linguistic tales</title>
 
     <!-- Real3D Flipbook -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/real3d-flipbook/css/font-awesome.css">
     <script src="/real3d-flipbook/js/flipbook.min.js"></script>
     <script type="text/javascript">
-      $(document).ready(function() {
+      $(document).ready(() => {
         window.flipbookSetPdf = new Promise(resolve => {
           resolve(pdfUrl => (
             $("#flipbook-container").flipBook({
@@ -24,13 +24,6 @@
             })
           ));
         });
-        // window.flipbookSetPages = new Promise(resolve => {
-        //   resolve(pages => {
-        //     $("#flipbook-container").flipBook({
-        //       pages
-        //     });
-        //   });
-        // });
       });
     </script>
   </head>

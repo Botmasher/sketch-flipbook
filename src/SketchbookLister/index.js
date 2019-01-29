@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import SketchbookEntry from '../SketchbookEntry';
 
 const SketchbookLister = ({ sketchbooksList, focusSketchbook, focusedSketchbookId }) => (
   <ul className="sketchbook-list">
@@ -11,13 +11,7 @@ const SketchbookLister = ({ sketchbooksList, focusSketchbook, focusedSketchbookI
         `}
         onMouseEnter={() => focusSketchbook(sketchbook)}
       >
-        <Link to={`sketchbooks/${sketchbook.id}`}>
-          <img
-            src={`${sketchbook.coverThumb}`}
-            alt={`${sketchbook.title} thumbnail`}
-          />
-          <p>{sketchbook.title}</p>
-        </Link>
+        <SketchbookEntry sketchbook={sketchbook} />
       </li>
     ))}
   </ul>
