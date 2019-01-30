@@ -3,7 +3,7 @@ const sketchbooks = [
     id: 'nativlang-sketchbook',
     title: 'NativLang Sketchbook',
     description: '',
-    about: 'http://www.patreon.com/NativLang',
+    about: 'https://www.patreon.com/posts/24312132/',
     url: '/books/sketchbook/pdf/sketchbook.pdf',
     coverThumb: '/books/sketchbook/thumbs/000-front-recto.jpg',
     coverImage: '/books/sketchbook/images/000-front-recto.jpg',
