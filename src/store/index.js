@@ -1,3 +1,4 @@
+// TODO: read all img paths from given dir
 const sketchbooks = [
   {
     id: 'nativlang-sketchbook',
@@ -23,7 +24,9 @@ const sketchbooks = [
       '/books/sketchbook/thumbs/011-danish.jpg',
       '/books/sketchbook/thumbs/012-middle-mongol.jpg',
       '/books/sketchbook/thumbs/013-aizuchi.jpg',
-      '/books/sketchbook/thumbs/014-blank.jpg',
+      '/books/sketchbook/thumbs/014-maya-tenselessness.jpg',
+      '/books/sketchbook/thumbs/015-gvprtskvni.jpg',
+      '/books/sketchbook/thumbs/099-blank.jpg',
       '/books/sketchbook/thumbs/998-patron-names.jpg',
       '/books/sketchbook/thumbs/999-back-recto.jpg',
       '/books/sketchbook/thumbs/999-back-verso.jpg',
@@ -44,7 +47,9 @@ const sketchbooks = [
       '/books/sketchbook/images/011-danish.png',
       '/books/sketchbook/images/012-middle-mongol.png',
       '/books/sketchbook/images/013-aizuchi.png',
-      '/books/sketchbook/images/014-blank.png',
+      '/books/sketchbook/images/014-maya-tenselessness.png',
+      '/books/sketchbook/images/015-gvprtskvni.png',
+      '/books/sketchbook/images/099-blank.png',
       '/books/sketchbook/images/998-patron-names.png',
       '/books/sketchbook/images/999-back-recto.jpg',
       '/books/sketchbook/images/999-back-verso.png',
